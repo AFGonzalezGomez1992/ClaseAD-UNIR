@@ -7,7 +7,7 @@ public class Entrada {
         // FILE -> fichero logico -> fisico
         // fichero logico
         // File ficheroSinPuntero = new File("C:\\Users\\Andrés\\Documents\\GitHub\\ClaseAD-UNIR\\T1\\Fichero\\src\\resources\\directorio\\ejemplo_fichero.md");
-        File ficheroSinPuntero = new File("src/resources/directorio");
+        /*File ficheroSinPuntero = new File("src/resources/directorio");
         System.out.println(ficheroSinPuntero.getName());
         System.out.println(ficheroSinPuntero.getParent());
         System.out.println(ficheroSinPuntero.length());
@@ -16,7 +16,7 @@ public class Entrada {
         // File[] -> todos los FICHEROS que estan dentro del directorio
         ficheroSinPuntero.listFiles();
         // String[] -> todas las rutas de los FICHEROS que estan dentro del directorio
-        ficheroSinPuntero.list();
+        ficheroSinPuntero.list();*/
 
         // 1 -> Obtener todos los nombres de los ficheros del directorio llamado directorio
         // 2 -> Crear una subcarpeta en el directorio llamado directorio y crear en ella un fichero
