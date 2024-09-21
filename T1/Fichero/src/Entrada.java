@@ -1,9 +1,21 @@
+import controller.GestorFicheros;
+
 import java.io.File;
 import java.io.IOException;
 
 public class Entrada {
 
     public static void main(String[] args) {
+
+        GestorFicheros gestorFicheros = new GestorFicheros();
+        //gestorFicheros.lecturaDirectorios("src/resources/directorio");
+        //gestorFicheros.lecturaDirectorios("src/resources/ficheros")
+        gestorFicheros.lecturaRecursiva("c:/Users/Andrés/Documents/GitHub");
+
+        // instancias de objetos y llamadas a metodos
+        //OBJETO CLASE 1
+        //OBJETO CLASE 2
+
         // FILE -> fichero logico -> fisico
         // fichero logico
         // File ficheroSinPuntero = new File("C:\\Users\\Andrés\\Documents\\GitHub\\ClaseAD-UNIR\\T1\\Fichero\\src\\resources\\directorio\\ejemplo_fichero.md");
