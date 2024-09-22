@@ -10,7 +10,12 @@ public class Entrada {
         GestorFicheros gestorFicheros = new GestorFicheros();
         //gestorFicheros.lecturaDirectorios("src/resources/directorio");
         //gestorFicheros.lecturaDirectorios("src/resources/ficheros")
-        gestorFicheros.lecturaRecursiva("c:/Users/Andrés/Documents/GitHub");
+        //gestorFicheros.lecturaRecursiva("c:/Users/Andrés/Documents/GitHub");
+        try {
+            gestorFicheros.lecturaTextoPlano("src/resources/ficheros/lectura.txt");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         // instancias de objetos y llamadas a metodos
         //OBJETO CLASE 1
