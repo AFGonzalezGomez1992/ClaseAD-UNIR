@@ -1,5 +1,8 @@
 import controller.GestionFicherosEscritura;
+import controller.GestorFicherosConjuntos;
 import controller.GestorFicherosLectura;
+
+import java.util.Scanner;
 
 public class Entrada {
 
@@ -8,14 +11,32 @@ public class Entrada {
         /*GestorFicherosLectura gestorFicherosLectura = new GestorFicherosLectura();
         //gestorFicheros.lecturaDirectorios("src/resources/directorio");
         //gestorFicheros.lecturaDirectorios("src/resources/ficheros")
-        //gestorFicheros.lecturaRecursiva("c:/Users/Andrés/Documents/GitHub");
+        gestorFicheros.lecturaRecursiva("c:/Users/Andrés/Documents/GitHub");
         try {
             gestorFicherosLectura.lecturaTextoPlano("src/resources/ficheros/lectura.txt");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }*/
-        GestionFicherosEscritura gestionFicherosEscritura = new GestionFicherosEscritura();
-        gestionFicherosEscritura.escribirFichero("src/resources/ficheros/escritura.txt");
+        //GestionFicherosEscritura gestionFicherosEscritura = new GestionFicherosEscritura();
+        //gestionFicherosEscritura.escribirFichero("src/resources/ficheros/escritura.txt");
+        GestorFicherosConjuntos gestorFicherosConjuntos = new GestorFicherosConjuntos();
+        Scanner scanner = new Scanner(System.in);
+        int opcion=0;
+        do {
+            System.out.println("Introduce que quieres hacer");
+            opcion = scanner.nextInt();
+            switch (opcion) {
+                case 1:
+                    gestorFicherosConjuntos.cifrado("src/resources/ficheros/cifradoCodigo.txt");
+                    break;
+                case 2:
+                    gestorFicherosConjuntos.descifrarMensajeCodigo("src/resources/ficheros/cifradoCodigo.txt2");
+                    break;
+            }
+
+        }while (opcion != 0) ;
+
+        GestorFicherosConjuntos.cifrado("src/resources/ficheros/cifrado.txt");
 
 
 

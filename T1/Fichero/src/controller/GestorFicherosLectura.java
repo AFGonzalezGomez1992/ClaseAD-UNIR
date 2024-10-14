@@ -67,6 +67,7 @@ public class GestorFicherosLectura {
             try{
                 //fileReader = new FileReader(file);
                 bufferedReader = new BufferedReader(new FileReader(file));
+
                 /* LECTURA CON FILEREADER
                 int lectura = 0;
                 //mientras exista el nmero haz la lectura e imprime
