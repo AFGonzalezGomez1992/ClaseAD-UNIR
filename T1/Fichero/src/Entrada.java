@@ -1,21 +1,24 @@
-import controller.GestorFicheros;
-
-import java.io.File;
-import java.io.IOException;
+import controller.GestionFicherosEscritura;
+import controller.GestorFicherosLectura;
 
 public class Entrada {
 
     public static void main(String[] args) {
 
-        GestorFicheros gestorFicheros = new GestorFicheros();
+        /*GestorFicherosLectura gestorFicherosLectura = new GestorFicherosLectura();
         //gestorFicheros.lecturaDirectorios("src/resources/directorio");
         //gestorFicheros.lecturaDirectorios("src/resources/ficheros")
         //gestorFicheros.lecturaRecursiva("c:/Users/Andrés/Documents/GitHub");
         try {
-            gestorFicheros.lecturaTextoPlano("src/resources/ficheros/lectura.txt");
+            gestorFicherosLectura.lecturaTextoPlano("src/resources/ficheros/lectura.txt");
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
+        }*/
+        GestionFicherosEscritura gestionFicherosEscritura = new GestionFicherosEscritura();
+        gestionFicherosEscritura.escribirFichero("src/resources/ficheros/escritura.txt");
+
+
+
 
         // instancias de objetos y llamadas a metodos
         //OBJETO CLASE 1
