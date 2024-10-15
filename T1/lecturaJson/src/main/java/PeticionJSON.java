@@ -1,6 +1,5 @@
-package resources;
-
-import netscape.javascript.JSObject;
+import com.google.gson.Gson;
+import model.Producto;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -162,13 +161,18 @@ public class PeticionJSON {
             JSONObject jsonObject = new JSONObject(bufferedReader.readLine());
             JSONArray jsonArray = jsonObject.getJSONArray("products");
             for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject object = jsonArray.getJSONObject(i);
-                String title = object.getString("title");
+                //JSONObject object = jsonArray.getJSONObject(i);
+                /*String title = object.getString("title");
                 String description = object.getString("description");
                 double price = object.getDouble("price");
                 int stock = object.getInt("stock");
-                String exportacionProducto = String.format("title:%s price:%.2f stock:%d", title,price,stock);
-                printWriter.println(exportacionProducto);
+                int id = object.getInt("id");
+                Producto producto = new Producto(title,description,id,stock,price);*/
+                //Producto producto = new Gson().fromJson(object.toString(), Producto.class);
+                Producto producto = new Gson().fromJson(jsonArray.getJSONObject(i).toString(), Producto.class);
+                String exportacionProducto = String.format("title:%s price:%.2f stock:%d", producto.getTitle(),producto.getPrice(),producto.getStock());
+                //printWriter.println(exportacionProducto);
+                System.out.println(exportacionProducto);
             }
 
             System.out.println("Exportacion completada");

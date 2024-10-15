@@ -1,5 +1,3 @@
-package resources;
-
 public class Entrada {
 
     public static void main(String[] args) {
@@ -39,7 +37,7 @@ public class Entrada {
             } catch (IOException | NullPointerException e) {
                 System.out.println("Error en el cerrado");
             }
-        }*/4
+        }*/
 
         // 1. Leer productos -> inprima informacion de los productos Nombre, precio, stok, descripcion
         // 2. Buscar producto -> pida por teclado un id y muestra la info de dicho producto
