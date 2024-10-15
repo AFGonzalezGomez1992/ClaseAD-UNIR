@@ -4,9 +4,7 @@ import netscape.javascript.JSObject;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -142,9 +140,54 @@ public class PeticionJSON {
                     break;
                 case 4:
                     System.out.println("Exprtar elementos");
+                    exportarDatos();
                     break;
             }
         }while (opcion !=5);
+    }
+
+    private void exportarDatos(){
+        // File ->FileWriter -><PrintWriter
+        File file = new File("src/main/java/resources/producto.txt");
+        PrintWriter printWriter = null;
+        try {
+            printWriter = new PrintWriter(new FileWriter(file));
+            // Leer JSON -> iterar por producto -> escribe una linea
+
+            URL url = new URL("https://dummyjson.com/products");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            //String lectura = bufferedReader.readLine();
+            //JSONObject jsonObject = new JSONObject(lectura);
+            JSONObject jsonObject = new JSONObject(bufferedReader.readLine());
+            JSONArray jsonArray = jsonObject.getJSONArray("products");
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject object = jsonArray.getJSONObject(i);
+                String title = object.getString("title");
+                String description = object.getString("description");
+                double price = object.getDouble("price");
+                int stock = object.getInt("stock");
+                String exportacionProducto = String.format("title:%s price:%.2f stock:%d", title,price,stock);
+                printWriter.println(exportacionProducto);
+            }
+
+            System.out.println("Exportacion completada");
+
+        } catch (MalformedURLException e){
+            System.out.println("Error en URL");
+        }
+        catch (IOException e) {
+            System.out.println("Error en los permisos");
+        }finally {
+            try{
+                printWriter.close();
+            }catch (NullPointerException e){
+                System.out.println("Error en el cerrado");
+            }
+
+        }
+
+
     }
 
     private void filtrarPrecio(int min, int max){
@@ -164,8 +207,8 @@ public class PeticionJSON {
                     String title = product.getString("title");
                     String description = product.getString("description");
                     int stock = product.getInt("stock");
-                    //System.out.println("El producto %s tiene como precio %.2f y una descripcion %s\n", title, price, description);
-                    System.out.println("El producto "+title+" tiene como precio "+price+" y una descripcion de "+description+"\n");
+                    System.out.printf("El producto %s tiene como precio %.2f y una descripcion %s\n", title, price, description);
+                    //System.out.println("El producto "+title+" tiene como precio "+price+" y una descripcion de "+description+"\n");
                 }
             }
 
