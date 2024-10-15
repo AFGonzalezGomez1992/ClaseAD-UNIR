@@ -1,15 +1,12 @@
-import netscape.javascript.JSObject;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import resources.PeticionJSON;
-
-import java.io.*;
+package resources;
 
 public class Entrada {
 
     public static void main(String[] args) {
+        //PeticionJSON peticionJSON = new PeticionJSON();
+        //peticionJSON.procesarPeticion();
         PeticionJSON peticionJSON = new PeticionJSON();
-        peticionJSON.procesarPeticion();
+        peticionJSON.metodoMenu();
         /*File file = new File("src/main/java/resources/usuario.txt");
         //txt ->JSON
         BufferedReader bufferedReader = null;
