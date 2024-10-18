@@ -18,6 +18,7 @@ public class Producto implements Serializable {
     // variables - private
 
     // id
+    private static final long serialVersionUID =12345L;
     private int id;
     private String title;
     private double price;
@@ -29,5 +30,13 @@ public class Producto implements Serializable {
         this.title = title;
         this.price = price;
         this.stock = stock;
+    }
+
+    public void mostrarDatos(){
+        System.out.println("serialVersionUID = " + serialVersionUID);
+        System.out.println("id = " + id);
+        System.out.println("title = " + title);
+        System.out.println("price = " + price);
+        System.out.println("stock = " + stock);
     }
 }

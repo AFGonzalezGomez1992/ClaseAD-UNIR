@@ -63,7 +63,6 @@ public class GestorFicheros {
             }
         }
     }
-
     public void escribirObjeto(String path){
         File file = new File(path);
         ObjectOutputStream objectOutputStream = null;
@@ -82,6 +81,24 @@ public class GestorFicheros {
             } catch (IOException |NullPointerException e) {
                 System.out.println("Error al cerrar");
             }
+        }
+    }
+
+    public void lecturaObjeto(String path){
+        File file = new File(path);
+        ObjectInputStream objectInputStream = null;
+
+        try {
+            objectInputStream = new ObjectInputStream(new FileInputStream(file));
+            Producto producto = (Producto) objectInputStream.readObject();
+            producto.mostrarDatos();
+
+        } catch (IOException e) {
+            System.out.println("Error en la lectura del fichero");
+        } catch (ClassNotFoundException e) {
+            System.out.println("No se encuentra la clase destino");
+        } catch (ClassCastException e){
+            System.out.println("Error al declarar el tipo de datos");
         }
     }
 }

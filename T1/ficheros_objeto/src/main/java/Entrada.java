@@ -6,7 +6,9 @@ public class Entrada {
         GestorFicheros gestorFicheros = new GestorFicheros();
         //gestorFicheros.escribirBinarios("src/main/java/resources/datos.bin");
         //gestorFicheros.lecturaBinarios("src/main/java/resources/datos.bin");
-        gestorFicheros.escribirObjeto("src/main/java/resources/objetos.obj");
+        //gestorFicheros.escribirObjeto("src/main/java/resources/objetos.obj");
+        //gestorFicheros.escribirObjeto("src/main/java/resources/objetos_serializados.obj");
+        gestorFicheros.lecturaObjeto("src/main/java/resources/objetos_serializados.obj");
 
 
     }
