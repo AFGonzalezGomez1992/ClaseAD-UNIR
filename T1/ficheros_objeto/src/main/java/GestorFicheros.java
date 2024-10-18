@@ -1,4 +1,5 @@
 import model.Producto;
+import model.Tienda;
 
 import java.io.*;
 
@@ -69,8 +70,9 @@ public class GestorFicheros {
 
         try {
             objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
-            objectOutputStream.writeObject(new Producto(1, "Producto1", 98.65, 1));
-            objectOutputStream.writeObject(new Producto(2, "Producto2", 12.65, 3));
+            objectOutputStream.writeObject(new Producto(1, "Producto1", 98.65, 1,23,"apple"));
+            objectOutputStream.writeObject(new Tienda("Tienda1",123,100));
+            objectOutputStream.writeObject(new Tienda("Tienda1",123));
 
         } catch (IOException e) {
             System.out.println("Error en el fichero");
@@ -92,6 +94,10 @@ public class GestorFicheros {
             objectInputStream = new ObjectInputStream(new FileInputStream(file));
             Producto producto = (Producto) objectInputStream.readObject();
             producto.mostrarDatos();
+            Tienda tienda =(Tienda) objectInputStream.readObject();
+            tienda.mostrarDatos();
+            Tienda tienda1 =(Tienda) objectInputStream.readObject();
+            tienda.mostrarDatos();
 
         } catch (IOException e) {
             System.out.println("Error en la lectura del fichero");

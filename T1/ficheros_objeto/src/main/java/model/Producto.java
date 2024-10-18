@@ -18,11 +18,13 @@ public class Producto implements Serializable {
     // variables - private
 
     // id
-    private static final long serialVersionUID =12345L;
+    private static final long serialVersionUID =23456L;
     private int id;
     private String title;
     private double price;
     private int stock;
+    private int discont;
+    private String brand;
     // constructores -> 1 -> vacio (solo si no hay otro escrito)
 
 
@@ -38,5 +40,7 @@ public class Producto implements Serializable {
         System.out.println("title = " + title);
         System.out.println("price = " + price);
         System.out.println("stock = " + stock);
+        System.out.println("discont = " + discont);
+        System.out.println("brand = " + brand);
     }
 }
