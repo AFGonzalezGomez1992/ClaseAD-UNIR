@@ -1,10 +1,14 @@
 package controller;
 
+import dao.CochesDAO;
+import dao.EmpleadoDAO;
 import database.DBConnection;
 import database.SchemaDB;
+import model.Coche;
 import model.Empleado;
 
 import java.sql.*;
+import java.util.Scanner;
 
 public class Concesionario {
     // Creade Read Update Delete
@@ -24,6 +28,21 @@ public class Concesionario {
     // Read -> OBTIENE VECTOR DE VALORES
 
     // insertar trabajador
+    private EmpleadoDAO empleadoDAO;
+    private CochesDAO cochesDAO;
+
+    public Concesionario(){
+        empleadoDAO = new EmpleadoDAO();
+        cochesDAO = new CochesDAO();
+    }
+    public void insertarTrabajadorDAO(Empleado empleado){
+        // la logica del negocio
+        try {
+            empleadoDAO.insertarEmpleado(empleado);
+        } catch (SQLException e) {
+            System.out.println("Error en la insercion del empleado");
+        }
+    }
     public void insetarTrabajador(Empleado empleado){
         //SchemaDB.nombre
         //Connection ->Statement (query) -> execute
@@ -71,7 +90,6 @@ public class Concesionario {
             System.out.println("Error en la creacion de la query");
         }
     }
-
     // lectura
     public void leerUsuarios(int tipo){
         //  no se puede mapear de forma directa -> Vectores[[nombre, apellido, correo],[nombre, apellido, correo]]
@@ -95,4 +113,55 @@ public class Concesionario {
             System.out.println("Error en la query");
         }
     }
+
+
+    public void agregarCoche(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Introduce marca");
+        String marca = scanner.next();
+
+
+        // si me dicen una marca y ya tengo 8 cches de esa marca, no lo quiero comprar
+
+
+        try {
+            if(cochesDAO.getModeloCochesMarca(marca).size() < 2){
+                System.out.println("introduce modelo");
+                String modelo = scanner.next();
+                System.out.println("Que caballos tiene");
+                int cv = scanner.nextInt();
+                System.out.println("Que precio tiene");
+                int precio = scanner.nextInt();
+                cochesDAO.addCoche(new Coche(marca,modelo,cv,precio));
+                System.out.println("coche agregado con exito");
+            }else {
+                System.out.println("No interesa el coche al concesionario");
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println("<La base de datos no esta disponible, quieres guardar el objeto para mas adelante");
+            //guardar el dato en un fichero -> DAO
+        }
+    }
+
+    public void filtrarPrecio(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Por que precio quieres filtrar");
+        int precio = scanner.nextInt();
+        try {
+            for (Coche coche: cochesDAO.getCochePrecio(precio)) {
+                // mostrar los datos de los coches resultantes en la consola
+                coche.mostrarDatos();
+            }
+
+        } catch (SQLException e) {
+            System.out.println("No se puede realizar la consulta, quieres hacer otra cosa");
+        }
+
+    }
+
+    // tener la funcionalidada de vender un coche -> matricula
+    // y el coche lo vende un vendedor (tengo que decir quien lo vende)
+    // tener la funcionalidad de cual es el vendedor que mas coches ha vendido
 }

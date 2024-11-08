@@ -15,15 +15,16 @@ public class Entrada {
         Connection connection = dbConnection.getConnection();
         //trabajas con la conexion
         dbConnection.closeConnection();
-
         DBConnection dbConnection2= new DBConnection();
         Connection connection2 = dbConnection.getConnection();*/
-        Concesionario concesionario = new Concesionario();
         // concesionario.insetarTrabajador(new Empleado("Juan1","Gomez","juan@gmail.com",567, Tipo.BECARIO));
         // concesionario.insetarTrabajador(new Empleado("Juan2","Gomez","juan@gmail.com",567, Tipo.INDEFINIDO));
         // concesionario.insetarTrabajador(new Empleado("Juan3","Gomez","juan@gmail.com",567, Tipo.EXTERNO));
         // concesionario.borrarUsuario(1);
-        concesionario.leerUsuarios(1);
+        //concesionario.leerUsuarios(1);
+        Concesionario concesionario = new Concesionario();
+        concesionario.agregarCoche();
+
 
 
 
