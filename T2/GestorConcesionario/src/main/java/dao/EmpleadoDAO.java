@@ -34,6 +34,26 @@ public class EmpleadoDAO {
 
     }
 
+    public void obtenerEmpleadoMes(int numero) throws SQLException {
+        String query = "SELECT * FROM %s ORDER BY %s DESC LIMIT ?";
+        preparedStatement = connection.prepareStatement(String.format(query,SchemaDB.COL_EMP_SALE));
+        preparedStatement.setInt(1, numero);
+        resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            String nombre = resultSet.getString(SchemaDB.COL_EMP_NAME);
+            String apellido = resultSet.getString(SchemaDB.COL_EMP_SURNAME);
+            Empleado empleado = new Empleado(nombre,apellido);
+            empleado.mostrarDatos();
+        }
+    }
+
+    public void realizarVenta(int id) throws SQLException {
+        String query ="UPDATE %S SET %S = %S+1 WHERE %s = ?";
+        preparedStatement = connection.prepareStatement(String.format(query,SchemaDB.TAB_EMP,SchemaDB.COL_EMP_SALE,SchemaDB.COL_ID));
+        preparedStatement.setInt(1,id);
+        preparedStatement.execute();
+    }
+
     public Empleado getEmpleado(int id) throws SQLException{
         preparedStatement = connection.prepareStatement(String.format("SELECT * FROM %s WHERE %s=?", SchemaDB.TAB_EMP, SchemaDB.COL_ID));
         preparedStatement.setInt(1, id);
@@ -49,10 +69,7 @@ public class EmpleadoDAO {
         }
         return null;
     }
-    public void realizarVenta(int id){
-      // String query ="UPDATE %s SET %s = %s+1 WHERE %s =?";
-       //preparedStatement = connection.prepareStatement(String.format(query,,SchemaDB.TAB_EMP));
-    }
+
     public Empleado getEmpleado(String nombre, String apellido, String correo, int telefono, int tipo){
         Tipo tipo1 = null;
         switch (tipo){

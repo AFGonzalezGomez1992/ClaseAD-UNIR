@@ -81,4 +81,9 @@ public class CochesDAO {
     private Coche mapearCoche(String marca, String modelo, int cv, int precio){
         return new Coche(marca, modelo, cv, precio);
     }
+
+    public void realizarVenta(int id){
+        // DELETE -> WHERE ide= id
+        // UPDATE -> estado = false WHERE id= id
+    }
 }

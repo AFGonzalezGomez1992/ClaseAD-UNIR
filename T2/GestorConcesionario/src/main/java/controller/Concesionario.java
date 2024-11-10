@@ -164,4 +164,33 @@ public class Concesionario {
     // tener la funcionalidada de vender un coche -> matricula
     // y el coche lo vende un vendedor (tengo que decir quien lo vende)
     // tener la funcionalidad de cual es el vendedor que mas coches ha vendido
+
+    public void realizarVenta(){
+        // pedido por scanner
+        int idCoche=0;
+        System.out.println("Dime el coche que vas a vender");
+        int idEmpleado=0;
+        System.out.println("Dime el vendedor que hace la venta");
+        try {
+            // el coche que estas vendiendo esta disponible?
+                // si no esta disponible haz xxxxx
+                    //buscar un coche con las mismas caracteristicas de cv y precio
+                // si esta disponible, procede a registrar la venta
+                    cochesDAO.realizarVenta(1);
+                    empleadoDAO.realizarVenta(1);
+        } catch (SQLException e) {
+            System.out.println("");
+        }
+    }
+
+    public void mostrarEmpleadosMes(int numero){
+        System.out.println("Die cuantos quieres sacar");
+        int numeroEmpleados =0;
+        try {
+            empleadoDAO.obtenerEmpleadoMes(3);
+        } catch (SQLException e) {
+            System.out.println("Error a la hora de obtenerlos");
+            System.out.println("Quieres hacer xxx");
+        }
+    }
 }
