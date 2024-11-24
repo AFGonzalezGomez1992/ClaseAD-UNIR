@@ -2,6 +2,7 @@ package controller;
 
 import dao.CochesDAO;
 import dao.EmpleadoDAO;
+import dao.VentaDAO;
 import database.DBConnection;
 import database.SchemaDB;
 import model.Coche;
@@ -30,10 +31,12 @@ public class Concesionario {
     // insertar trabajador
     private EmpleadoDAO empleadoDAO;
     private CochesDAO cochesDAO;
+    private VentaDAO ventaDAO;
 
     public Concesionario(){
         empleadoDAO = new EmpleadoDAO();
         cochesDAO = new CochesDAO();
+        ventaDAO = new VentaDAO();
     }
     public void insertarTrabajadorDAO(Empleado empleado){
         // la logica del negocio
@@ -176,8 +179,9 @@ public class Concesionario {
                 // si no esta disponible haz xxxxx
                     //buscar un coche con las mismas caracteristicas de cv y precio
                 // si esta disponible, procede a registrar la venta
-                    cochesDAO.realizarVenta(1);
-                    empleadoDAO.realizarVenta(1);
+                    //* cochesDAO.realizarVenta(1);
+                    //* empleadoDAO.realizarVenta(1);
+            ventaDAO.realizarVenta(idEmpleado,idCoche);
         } catch (SQLException e) {
             System.out.println("");
         }
