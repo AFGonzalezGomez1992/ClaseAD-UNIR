@@ -8,14 +8,26 @@ OBJETO -> CLASS             ->          TABLA
 Trabajador                              empleados (name, surname, mail, phone)
 
 sessionfactory -> connection
+	new Hibernate().getSessionFactory() -> una copia del sessionFactory actual -> con las configuraciones
+	del archivo
 session -> currentSession
+	sessionFatory.gerCurrentSession();
 begintransaction
-	save -persist s.persist(new Trabajador(""))
-	get
-	update
-	delete
+	session.beginTransacion();
+		save -persist s.persist(new Trabajador(""))
+		get - s.get(clase_mapeo,id) -> un objeto del tipo clase mapeo
+		merge -> primero obtengo un objeto (get) luego actualizo el objeto y por ultimo utilizo un 
+		update. Solo me vale si lo busco por id
+		delete -> primero obtengo un objeto (get) luego actualizo el objeto y por ultimo utilizo un
+		dekete. En este caso puedo utilizar un objeto con constructor unica y exclusivamente de id
 commit -> autoCommint(true)
 close
+
+// SI QUIERO ACCIONES MÁS AVANZADA, NECESITO CREAR HQL -> Query
+// Selección múltiple
+Query<clase_mapeo> = s.createQuery("HQL",clase_mapeo)
+
+// si las querys sonrecurrentes -> namedQuery -> llama por su nombre
 
 1 Creo el modelo de datos 
 
@@ -29,11 +41,16 @@ Los modelos deben cumplir:
 - getter y setter
 
 Anotaciones
-@Entity -> esto ira a una tabla
+@Entity -> esto indica que es un objeto a manejar desde programación
 @Table -> a la tabla con el nombre de la clase
 @Column -> el atributo va a la columna con su nombre
 @Id -> el atributo va al PK de la base de dato
 @GenerateValue -> indica que el campo es generado automáticamente en base de datos
+@Embeddable -> indica que la entidad se pondra como propiedad dento de otra clase
+@Embedded -> indica que el atributo tiene que ser buscado en la clase donde esta definido
+(@Embeddable)
+@AtributeOverrides({@AtributeOverride(name="",@colum(name=""))}) -> modifica el atributo y 
+lo lleva a una columna indicada
 
 2. creo un archivo de configuración para la bd e hibernate // TODO mapeo
 con el nombre hibernate.cfg.xml
@@ -42,5 +59,47 @@ como se conecta hibernate con la bse de datos y como se traducen los modelos
 3. Crear un singleton con la creación del SessionFactory
 
 4. Crear la sesion y transacciones
+
+RELACIONES
+
+1- identificar quien es la entidad dominante -> Trabajador
+2- determino que tipo de relaion es
+	@OnetoOne -> un elemento de la tabla solo se relaciona con un
+	elemento de la otra tabla -> mapeado
+
+	@OnetoMany -> un elemento de la tabla se relaciona con muchos
+	elementos de la otra tabla -> mapeado
+
+	@ManytoOne -> muchos elementos de la tabla se relacionan con 
+	un elemento de la otra tabla -> mapeado
+
+	@ManytoMany -> muchos elementos de esta tabla van con muchos
+	elementos de la otra tabla -> JOIN
+
+2.1 - OnetoOne
+
+	1. En la relación dominante creo un objeto del tipo relación
+	Unidireccional
+	@OnetoOne (cascade = Cascade.ALL)
+	@JoinColumn(name = "columna con la FK")
+	private Habitacion
+
+	Bideireccional
+	2. En la clase con la relacion no dominante
+	@OnetoOne (mappedBy = "nombre_propiedad_relacion_punto1")
+	private Trabajador
+
+2.2 - ManytoOne - OnetoMany
+
+	1. En la relacion dominante creo un objeto del tipo relacion
+	Unidireccional
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "columna con la FK")
+
+    Bideireccional
+	2. En la clase con la relacion no dominante
+	@OnetoMany (mappedBy = "nombre_propiedad_relacion_punto1")
+	private List<Cliente>
+
 
 
