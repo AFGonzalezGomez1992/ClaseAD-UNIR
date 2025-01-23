@@ -1,10 +1,12 @@
 import dao.ClienteDAO;
 import dao.HabitacionDAO;
 import dao.TrabajadorDAO;
+import database.HibernateUtil;
 import model.Cliente;
 import model.Direccion;
 import model.Habitacion;
 import model.Trabajador;
+import org.hibernate.Session;
 
 public class Entrada {
     public static void main(String[] args) {
@@ -86,7 +88,21 @@ public class Entrada {
 
         //clienteDAO.crearCliente(new Cliente("Juan"),11);
 
-        habitacionDAO.getAllClientes(11);
+        //habitacionDAO.getAllClientes(11);
+
+        //clienteDAO.relacionClienteTrabajador(1);
+        //trabajadorDAO.relacionTrabajadorCliente(21);
+        /*//insersion doble
+        Session session = new HibernateUtil().getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Cliente cliente = session.get(Cliente.class,1);
+        Trabajador trabajador = session.get(Trabajador.class, 33);
+        cliente.getListaTrabajadores().add(trabajador);
+        trabajador.getListaClientes().add(cliente);
+        session.persist(cliente);
+        session.persist(trabajador);
+        session.getTransaction().commit();
+        session.close();*/
 
     }
 

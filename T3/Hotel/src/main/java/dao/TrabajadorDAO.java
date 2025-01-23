@@ -1,6 +1,7 @@
 package dao;
 
 import database.HibernateUtil;
+import model.Cliente;
 import model.Habitacion;
 import model.Trabajador;
 import org.hibernate.Session;
@@ -106,5 +107,17 @@ public class TrabajadorDAO {
         session.persist(trabajador);
         session.getTransaction().commit();
         session.close();
+    }
+
+    public void relacionTrabajadorCliente(int id){
+        Session session = new HibernateUtil().getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Trabajador trabajador = session.get(Trabajador.class,id);
+        for (Cliente cliente: trabajador.getListaClientes()){
+            System.out.println(cliente.getNombre());
+        }
+        session.getTransaction().commit();
+        session.close();
+
     }
 }
