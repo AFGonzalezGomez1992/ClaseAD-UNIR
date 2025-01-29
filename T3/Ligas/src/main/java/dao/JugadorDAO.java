@@ -1,37 +1,37 @@
 package dao;
 
 import database.HibernateUtil;
-import model.Equipo;
 import model.Jugador;
+import model.Posicion;
 import org.hibernate.Session;
 
-import java.util.List;
+public class JugadorDAO {
+    private Session session;
 
-public class EquipoDAO {
-
-    Session session;
-
-    public Equipo getEquipo(int id){
+    public void crearJugador(Jugador jugador, Posicion posicion){
         session = new HibernateUtil().getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        Equipo equipo = session.get(Equipo.class, id);
+        jugador.setPosicion(posicion);
+        session.merge(jugador);
         session.getTransaction().commit();
         session.close();
-        return equipo;
     }
-    public void actualizarEquipo(Equipo equipo){
+
+    public void actualizarJugador(Jugador jugador){
         session = new HibernateUtil().getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        session.merge(equipo);
+        session.merge(jugador);
         session.getTransaction().commit();
         session.close();
     }
-    public List<Jugador> obtenerPlantilla(int id){
-        session = new HibernateUtil().getSessionFactory().getCurrentSession();;
+
+    public Jugador obtenerJugador(int id){
+        session = new HibernateUtil().getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        Equipo equipo =session.get(Equipo.class,id);
+        Jugador jugador = session.get(Jugador.class,id);
         session.getTransaction().commit();
         session.close();
-        return equipo.getJugadores();
+        return jugador;
     }
+
 }

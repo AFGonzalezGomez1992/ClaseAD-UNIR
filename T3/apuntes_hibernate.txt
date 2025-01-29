@@ -101,5 +101,28 @@ RELACIONES
 	@OnetoMany (mappedBy = "nombre_propiedad_relacion_punto1")
 	private List<Cliente>
 
+2.3 - ManytoMany ->  2 JoinTable JoinColumn InverseJoinColumn
 
+	1. Unidireccional
+	2. Bidireccional
+
+Una tercera tabla que actua como relacional
+
+	Un empleado puee gestionar muchas reservas donde en cada reserva hay un cliente
+	Un cliente puede ser atendido por muchos trabajadores, ya que puede hacer varias
+	reservas
+	Muchos trabajadores se relacionan con muchos clientes
+
+ClaseA
+@Manyto<many(fetch = FetchType.EAGER)
+@JoinTable(name = "nombre_tabla_auxiliar",joinColumn=@JoinColumn="nombre_FK1",inverseJoinColumn=@JoinColumn="nombre_FK2")
+private List<ClaseB> listado;
+
+ClaseB
+@ManytoMany(mappedBy="listado", fetch = FetchType.EAGER) -> nombre del atributo que guarda la relacion en
+la entidad dominante
+private List<ClaseA> listado;
+
+1 -> 33
+33 -> 1
 
