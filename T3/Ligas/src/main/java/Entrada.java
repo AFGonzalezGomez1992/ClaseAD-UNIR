@@ -18,6 +18,8 @@ public class Entrada {
         //ligaController.crearJugador(new Jugador("Julian",10000,"Española"),4);
         //ligaController.contratarEntrenador(1,1);
         //ligaController.analizarPlantilla(1);
-        ligaController.getEquiposCompeticion(1);
+        //ligaController.getEquiposCompeticion(1);
+        //ligaController.obtenerLigas();
+        ligaController.buscarPorNacionalidad();
     }
 }

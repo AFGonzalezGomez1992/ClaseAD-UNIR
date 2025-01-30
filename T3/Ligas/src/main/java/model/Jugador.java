@@ -12,6 +12,10 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
+@NamedQuery(name ="Jugador.findNacionalidad",query = "FROM Jugador j SET j.nacionalidad=:nacionalidad")
+@NamedQuery(name ="Jugador.findAll",query = "FROM Jugador")
+
 @Entity
 @Table(name = "jugadores")
 public class Jugador implements Serializable {
@@ -27,10 +31,10 @@ public class Jugador implements Serializable {
     private String nacionalidad;
     @Column
     private int goles;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_posicion")
     private Posicion posicion;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_equipo")
     private Equipo equipo;
 

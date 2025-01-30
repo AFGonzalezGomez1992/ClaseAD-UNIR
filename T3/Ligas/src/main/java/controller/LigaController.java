@@ -93,4 +93,23 @@ public class LigaController {
             System.out.println(equipo.getNombre());
         }
     }
+
+    public void obtenerLigas(){
+        for (Liga item:ligasDao.getAllLigas()) {
+            System.out.println("El nombre de la liga es : "+item.getNombre());
+            System.out.println("Equipos de la liga");
+            for (Equipo equipo:item.getEquipos()) {
+                System.out.println("\t"+equipo.getNombre());
+            }
+        }
+
+    }
+
+    public void buscarPorNacionalidad(){
+        for (Jugador item:jugadorDAO.obtenerJugaoresNacionalidad("española")) {
+            System.out.println((item.getNombre()));
+        }
+
+
+    }
 }

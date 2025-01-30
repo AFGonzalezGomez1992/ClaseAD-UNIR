@@ -39,7 +39,7 @@ public class Equipo implements Serializable {
     @JoinColumn(name = "id_liga")
     private Liga liga;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "inscripciones",joinColumns = @JoinColumn(name = "id_equipo"),
             inverseJoinColumns = @JoinColumn(name = "id_competicion"))
     private List<Competicion> competiciones;

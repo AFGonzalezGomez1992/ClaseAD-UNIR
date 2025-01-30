@@ -2,8 +2,12 @@ package dao;
 
 import database.HibernateUtil;
 import model.Jugador;
+import model.Liga;
 import model.Posicion;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
+
+import java.util.List;
 
 public class JugadorDAO {
     private Session session;
@@ -32,6 +36,40 @@ public class JugadorDAO {
         session.getTransaction().commit();
         session.close();
         return jugador;
+    }
+
+    public List<Jugador> obtenerJugaoresNacionalidad(String nacionalidad){
+        session = new HibernateUtil().getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        //UPDATE XXXX SER XXX=XXX WHERE XXX=XXXX
+        String queySTR ="FROM Jugador j SET j.nacionalidad=:nacionalidad";
+        Query<Jugador> query= session.createQuery(queySTR, Jugador.class);
+        query.setParameter("nacionalidad",nacionalidad);
+        List<Jugador> listaJugadores = query.list();
+        session.getTransaction().commit();
+        session.close();
+        return listaJugadores;
+    }
+
+    public List<Jugador> obtenerJugaoresNacionalidadNamed(String nacionalidad){
+        session = new HibernateUtil().getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Query<Jugador> query = session.createNamedQuery("Jugador.findNacionalidad", Jugador.class);
+        query.setParameter("nacionalidad", nacionalidad);
+        List<Jugador> listaJugadores = query.list();
+        session.getTransaction().commit();
+        session.close();
+        return listaJugadores;
+    }
+
+    public List<Jugador> getAll(){
+        session = new HibernateUtil().getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Query<Jugador> query = session.createNamedQuery("Jugador.findAll", Jugador.class);
+        List<Jugador> listaJugadores = query.list();
+        session.getTransaction().commit();
+        session.close();
+        return listaJugadores;
     }
 
 }

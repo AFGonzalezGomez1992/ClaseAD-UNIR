@@ -24,7 +24,7 @@ public class Posicion implements Serializable {
     @Column
     private String posicion;
 
-    @OneToMany(mappedBy = "posicion")
+    @OneToMany(mappedBy = "posicion",fetch = FetchType.EAGER)
     private List<Jugador> jugadores;
 
     public Posicion(String posicion) {

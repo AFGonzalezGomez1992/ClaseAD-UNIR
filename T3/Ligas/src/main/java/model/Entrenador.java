@@ -27,7 +27,7 @@ public class Entrenador implements Serializable {
     private int calificacion;
 
     // bidereccionalidad
-    @OneToOne(mappedBy = "entrenador")
+    @OneToOne(mappedBy = "entrenador",fetch = FetchType.EAGER)
     private Equipo equipo;
 
     public Entrenador(String nombre, int titulos, int calificacion) {
