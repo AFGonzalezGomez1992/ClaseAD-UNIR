@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- solo puedo tener un nodo root -->
+<!-- nombre de la base de datos-->
+<libreria>
+    <libros>
+    </libros>
+</libreria>

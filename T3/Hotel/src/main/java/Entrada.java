@@ -69,7 +69,7 @@ public class Entrada {
 
         //trabajadorDAO.selecionHabitacionTrabajador(33);
 
-        //habitacionDAO.getTrabajadorHabitacion(13);
+        habitacionDAO.getTrabajadorHabitacion(13);
         /*trabajadorDAO.insertarTrabajador(new Trabajador("Borja", "Martin",
                 new Direccion("Madrid", "Madrid"),
                 new Direccion("Galicia", "Galicia"), 4567),new Habitacion(3,300,3));*/
