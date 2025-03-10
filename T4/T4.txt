@@ -1,0 +1,43 @@
+obtener un nodo
+
+/nombre/nombre_secundario
+
+obtener el valor en texto de un nodo
+
+/peliculas/pelicula/sinopsis/text()
+
+obtener el valor del atributo de un nodo
+
+/peliculas/pelicula/@director
+
+filtrado[] por atributo
+
+/peliculas/pelicula[@titulo="Pulp Fiction"] -> Filtro por atributo
+/peliculas/pelicula/personajes/personaje[text()="Vincent Vega"] -> Filtro por valor del nodo
+
+
+----------------------------------------------------------
+todas las peliculas donde sale el presonaje de aldo rain
+/peliculas/pelicula[personajes/personaje[text()="Lt. Aldo Raine"]]
+
+todas las peliculas donde sale el presonaje de aldo rain o el actor Brad Pitt
+/peliculas/pelicula[personajes/personaje[text()="Lt. Aldo Raine" or @actor="Brad Pitt"]]
+
+Lo mismo que antes pero quedándonos con el texto del nodo personaje
+/peliculas/pelicula[personajes/personaje[text()="Lt. Aldo Raine" or @actor="Brad Pitt"]]/text()
+
+Lo mismo que antes pero quedándonos con el atributo actor
+/peliculas/pelicula[personajes/personaje[text()="Lt. Aldo Raine" or @actor="Brad Pitt"]]/personajes/personaje/@actor
+
+Las peliculas con una puntuación mayor que 8
+/peliculas/pelicula[@puntuacion > 8]
+
+Las peliculas con una puntuación mayor que 8 y el nombre de sus personajes
+/peliculas/pelicula[@puntuacion > 8]/personajes/personaje/text()
+
+Todas las peliculas que tienen menos de un 8 y tienen a Leonardo DiCaprio como actor
+/peliculas/pelicula[@puntuacion < 8 and  personajes[personaje[@actor="Leonardo DiCaprio"]]]
+
+
+
+

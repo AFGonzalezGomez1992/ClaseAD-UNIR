@@ -2,6 +2,27 @@
 <!-- solo puedo tener un nodo root -->
 <!-- nombre de la base de datos-->
 <libreria>
-    <libros>
+    <libros categoria="ciencia_ficcion">
+        <libro isbn="123A" idioma="en" paginas="123">
+            <titulo>
+                Harry potter
+            </titulo>
+            <autor>
+                J:K: Rowling
+            </autor>
+            <precio moneda="dol">
+                25.9.
+            </precio>
+        </libro>
+        <libro isbn="123A" idioma="es">
+        </libro>
     </libros>
+    <libros categoria="sociedad">
+    </libros>
+    <revistas categoria="entretenimiento">
+    </revistas>
+    <revistas categoria="pasatiempos">
+        <revista>
+        </revista>
+    </revistas>
 </libreria>
