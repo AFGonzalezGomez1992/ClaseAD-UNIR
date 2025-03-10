@@ -8,7 +8,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 
-public class Entrada {
+public class EntradaLectura {
     public static void main(String[] args) {
         //gestor
         DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();

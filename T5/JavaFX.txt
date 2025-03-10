@@ -1,0 +1,10 @@
+JavaFX
+
+	Grafica -> .fxml
+	Lógica -> .java
+
+Stage -> ventana
+Scene -> contenido de la ventana + controller
+Node -> elementos de la scene
+	pueden verse -> button listview spinner combo table
+	no pueden verse -> layout -> Pane

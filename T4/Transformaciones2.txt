@@ -1,0 +1,42 @@
+<xls:for-each select="personajes/personaje[filtrado]">
+	<li>
+		<xsl:value-of select="concat(., ' (', @actor, ')')"/>
+	</li>
+</xsl:for-each>
+
+FOR -> foreach -> donde quieres hacer la búsqueda
+LET -> variable -> para cada iteracion
+WHERE -> comprobacion
+ORDER BY ->ordenacion
+RETURN -> salida
+
+for $pelicula in doc('peliculas.xml')/peliculas/pelicula -> obligatorio
+	let $i = $pelicula/@titulo -> optativo
+	where $pelicula/@puntuacion > 8 
+	order by $pelicula/@puntuacion
+	return $pelicula/personajes/
+
+
+NODO CONTENIDO
+NODO TEXTO
+NODO ATTR
+NODO VALOR -ATTR
+
+
+<peliculas>
+	<pelicula  puntuacion="8.8">
+		<sinopsis>
+			Un ladrón 		</sinopsis>
+		<personajes>
+			<personaje actor="Leonardo DiCaprio">
+				Dom Cobb
+			</personaje>
+			<personaje actor="Joseph Gordon-Levitt">
+				Arthur
+			</personaje>
+			<personaje actor="Ellen Page">
+				Ariadne
+			</personaje>
+		</personajes>
+	</pelicula>
+</peliculas>

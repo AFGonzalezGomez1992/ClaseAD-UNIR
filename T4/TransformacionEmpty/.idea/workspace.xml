@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1bb8beb4-39fb-4ac8-9195-b32c1f24e87a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Parsers/src/main/java/Entrada.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Parsers/peliculas.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Parsers/src/main/java/peliculas.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Parsers/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Parsers/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Parsers/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Parsers/src/main/java/EntradaEscritura.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../T5/GestorLigas/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../T5/GestorLigas/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../T5/GestorLigas/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Parsers/src/main/java/Entrada.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Parsers/src/main/java/EntradaLectura.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
