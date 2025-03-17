@@ -37,3 +37,31 @@ dto -> transaciones de los objetos contra base de datos
 servicio @Serice
 		 -> Service -> la lógica de la app (solo la firma de los metodos)
 	     -> ServiceImp -> la lógica de ya todos los métodos escritos
+
+
+http://localhost:8080/usuarios/all
+-------dominio------ ---map--- --endpoint
+
+endpoint metodos:
+- GET -> select ****** por defecto
+- POST -> insert
+- PUT -> update
+- DELETE -> delete
+
+http://localhost:8080/usuarios/ligas
+
+
+queryParams
+
+https://miapi.com/users/add?nombre="asd"&apellido="asd" -> requestParams // queryParams ->
+	busquedas, filtros -> poco seguros
+
+
+body params
+https://miapi.com/users/add -> bodyParams -> inserciones,borrados, updates -> muy seguro
+
+LOS METODOS QUE VAN CONTRA BASE DE DATOS -> repositorio -> CRUD ->
+
+1- creo método en repositorio (o no, porque si ya esta creado)
+2- creo el método de la lógica en el servicio
+3- implemento el metodo en la clase que implementa el servico (aquí pongo la lógica y utilizo el repository)

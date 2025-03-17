@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -41,5 +42,17 @@ public class UsuarioController {
         }
 
         return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    // sacar el jasos de todos los usuarios de labase de datos
+
+    @GetMapping("/getAll")
+    public ResponseEntity<List<Usuario>> getAllUser(){
+        List<Usuario> lista = usuarioService.getAllUsuarios();
+        if (lista.isEmpty()) {
+            return new ResponseEntity<>(new ArrayList<Usuario>(),HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(lista, HttpStatus.OK);
     }
 }
